@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/0.5.83-alpha">
+  <PropertyGroup>
+      <FrameworkPathOverride>/usr/local/share/dotnet/shared/Microsoft.NETCore.App/7.0.5/mscorlib.dll</FrameworkPathOverride>
+    <StartupCommand>set BROWSER=none&amp;&amp;npm start</StartupCommand>
+    <JavaScriptTestRoot>src\</JavaScriptTestRoot>
+    <JavaScriptTestFramework>Jest</JavaScriptTestFramework>
+    <!-- Command to run on project build -->
+    <BuildCommand></BuildCommand>
+    <!-- Command to create an optimized build of the project that's ready for publishing -->
+    <ProductionBuildCommand>npm run build</ProductionBuildCommand>
+    <!-- Folder where production build objects will be placed -->
+    <BuildOutputFolder>$(MSBuildProjectDirectory)\build</BuildOutputFolder>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="src\setup\auth\" />
+    <Folder Include="src\setup\routes-manager\" />
+  </ItemGroup>
+    <Target Name="_GetRequiredWorkloads">
+        <!-- This target is required to avoid the error MSB4057 -> MyProject.client.esproj : error MSB4057: The target "_GetRequiredWorkloads" does not exist in the project. -->
+    </Target>
+</Project>

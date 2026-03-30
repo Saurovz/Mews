@@ -1,0 +1,90 @@
+variable "Azure" {
+    type = "AzureAccount"
+
+    value "azure-development-subscription" {
+        environment = ["development"]
+    }
+
+    value "azure-test-subscription" {
+        environment = ["test"]
+    }
+
+    value "azure-demo-subscription" {
+        environment = ["demo"]
+    }
+
+    value "azure-production-subscription" {
+        environment = ["production"]
+    }
+}
+
+variable "NugetFeedEndpoints" {
+    value "{\"endpointCredentials\": [{\"endpoint\":\"https://pkgs.dev.azure.com/mews/_packaging/mews/nuget/v3/index.json\", \"username\":\"docker\", \"password\":\"#{AzureDevopsNugetFeedToken}\"}]}" {}
+}
+
+variable "PulumiStackName" {
+    value "mews/AzureDevelopment" {
+        environment = ["development"]
+    }
+
+    value "mews/AzureTest" {
+        environment = ["test"]
+    }
+
+    value "mews/AzureDemo" {
+        environment = ["demo"]
+    }
+
+    value "mews/AzureProduction" {
+        environment = ["production"]
+    }
+}
+
+variable "ServiceName" {
+    value "tax-manager" {}
+}
+
+variable "RepositoryName" {
+    value "tax-manager" {}
+}
+
+variable "TargetACRHostWeu" {
+    value "#{ACRHostDevelopmentWeu}" {
+        environment = ["development"]
+    }
+
+    value "#{ACRHostDemoWeu}" {
+        environment = ["demo"]
+    }
+
+    value "#{ACRHostProductionWeu}" {
+        environment = ["production"]
+    }
+}
+
+variable "TargetACRHostNeu" {
+    value "#{ACRHostDevelopmentNeu}" {
+        environment = ["development"]
+    }
+
+    value "#{ACRHostDemoNeu}" {
+        environment = ["demo"]
+    }
+
+    value "#{ACRHostProductionNeu}" {
+        environment = ["production"]
+    }
+}
+
+variable "TargetACRHostGwc" {
+    value "#{ACRHostTestGwc}" {
+        environment = ["test"]
+    }
+}
+variable "GH_REPO_NAME" {
+    value "tax-manager" {}
+}
+
+variable "GH_ORG" {
+    value "MewsSystems" {}
+}

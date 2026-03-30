@@ -1,0 +1,21 @@
+config:
+  azure-native:tenantId: afdb37c2-13f1-4a78-b91e-85749ac8e807
+  TaxManager:container-registry-username: 772eb7f9-3bf0-49d4-a542-65675202437c
+  TaxManager:cpu-utilization-scale-percentage: "60"
+  TaxManager:cpus-per-container: "1"
+  TaxManager:gibibytes-of-memory-per-container: "2"
+  TaxManager:locations: Germany West Central
+  TaxManager:max-replicas: "1"
+  TaxManager:min-replicas: "1"
+  TaxManager:service-environment: test
+  TaxManager:service-name: tax-manager
+  TaxManager:resource-group: tax-manager-test
+  TaxManager:shared-stack-name: mews/shared/test
+  azure-native:subscriptionId: 1431c24d-7767-4aa7-ac57-7ba1da5a510a
+  TaxManager:container-registry-password:
+    secure: AAABAClAeESzL8Fnka28Sjgfp1L611YeT+clnrLftDoGjTlftRsISulJxH2nCaJOzXUdr5DELw2lta8jf/VWVEEoz+agF1/V
+  TaxManager:newrelic-license-key:
+    secure: AAABAO88BPvdLw5II6QwfzDt4RbHMcp3Me8iNpowE+6+pSDoVNDojm6sbzjbJg57nLA0GyPsDz/w+IN+i1gfkKLGoGlUiq4H
+  TaxManager:some-secret-value:
+    secure: AAABANpFJpcJRu33w+w35RxmUBkFSychz0Ll3yuSFDtuDojKT7cRIFHEYnsdcCNEcg==
+  TaxManager:service-bus-locations: Germany West Central

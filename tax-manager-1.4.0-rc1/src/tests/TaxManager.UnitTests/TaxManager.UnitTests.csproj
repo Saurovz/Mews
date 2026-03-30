@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.4" />
+        <PackageReference Include="Microsoft.Extensions.Diagnostics.Testing" Version="9.4.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+        <PackageReference Include="coverlet.collector" Version="6.0.4">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Moq" Version="4.20.72" />
+        <PackageReference Include="NUnit" Version="4.1.0" />
+        <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
+        <PackageReference Include="JunitXml.TestLogger" Version="4.1.0" />
+    </ItemGroup>
+    
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\hosts\TaxManager.Api\TaxManager.Api.csproj" />
+      <ProjectReference Include="..\..\modules\core\TaxManager.Application\TaxManager.Application.csproj" />
+      <ProjectReference Include="..\..\modules\core\TaxManager.Domain\TaxManager.Domain.csproj" />
+      <ProjectReference Include="..\..\modules\core\TaxManager.EntityFrameworkCore\TaxManager.EntityFrameworkCore.csproj" />
+    </ItemGroup>
+    
+
+</Project>

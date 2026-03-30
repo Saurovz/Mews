@@ -1,0 +1,26 @@
+{
+    "$schema": "https://json.schemastore.org/launchsettings.json",
+    "profiles": {
+        "TaxManager": {
+            "commandName": "Project",
+            "launchBrowser": true,
+            "launchUrl": "health",
+            "applicationUrl": "http://localhost:5009",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "localDev"
+            },
+            "dotnetRunMessages": true
+        },
+       //* Added for Swagger Launch *//
+        "http": {
+            "commandName": "Project",
+            "dotnetRunMessages": true,
+            "launchBrowser": true,
+            "launchUrl": "swagger",
+            "applicationUrl": "http://localhost:5001",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "localDev"
+            }
+        }
+    }
+}

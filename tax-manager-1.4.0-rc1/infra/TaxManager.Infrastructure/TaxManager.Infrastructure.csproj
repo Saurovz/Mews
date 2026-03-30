@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mews.Infrastructure.Resources" Version="1.1.589.1" />
+    <PackageReference Include="Mews.Infrastructure.Sdk" Version="1.1.589.1" />
+    <PackageReference Include="Pulumi" Version="3.77.0" />
+  </ItemGroup>
+
+</Project>

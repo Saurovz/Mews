@@ -1,0 +1,35 @@
+###############################
+# Git Line Endings            #
+###############################
+
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+*.gitattributes text
+.gitignore text
+*.md text diff=markdown
+
+# windows files
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+*.ps1 text eol=crlf
+
+# Custom for Visual Studio
+*.cs     diff=csharp eol=crlf
+*.sln    merge=union eol=crlf
+*.csproj merge=union eol=crlf
+*.vbproj merge=union eol=crlf
+*.fsproj merge=union eol=crlf
+*.dbproj merge=union eol=crlf
+*.props eol=crlf
+*.ruleset eol=crlf
+*.config eol=crlf
+*.cshtml eol=crlf
+*.directives eol=crlf
+*.DotSettings eol=crlf
+.deployment eol=crlf
+
+
+# linux files
+Dockerfile text eol=lf
+*.sh text eol=lf

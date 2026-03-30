@@ -1,0 +1,53 @@
+version: 2
+
+registries:
+  public:
+    type: nuget-feed
+    url: https://api.nuget.org/v3/index.json
+  mews-artifacts-feed:
+    type: nuget-feed
+    url: https://pkgs.dev.azure.com/mews/_packaging/mews/nuget/v3/index.json
+    username: mews-feed
+    password: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+
+updates:
+  - package-ecosystem: "nuget"
+    registries:
+      - public
+      - mews-artifacts-feed
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "08:00"
+    target-branch: "main"
+
+    ignore:
+    - dependency-name: "Microsoft.AspNetCore*"
+      update-types: ["version-update:semver-major"]
+    - dependency-name: "Microsoft.EntityFrameworkCore*"
+      update-types: ["version-update:semver-major"]
+    - dependency-name: "Microsoft.Extensions*"
+      update-types: ["version-update:semver-major"]
+    - dependency-name: "Serilog.AspNetCore"
+      update-types: ["version-update:semver-major"]
+    - dependency-name: "Aspire.Hosting.AppHost"
+    - dependency-name: "OpenTelemetry*"
+      update-types: ["version-update:semver-major", "version-update:semver-minor"]
+
+    groups:
+      newrelic-agent-dependencies:
+        patterns:
+          - "NewRelic.Agent*"
+      atlas-dependencies:
+        patterns:
+          - "Mews.Atlas*"
+      infra-dependencies:
+        patterns:
+          - "Mews.Infrastructure*"
+          - "Pulumi*"
+      dotnet-core-dependencies: # Packages released together from https://github.com/dotnet/core/releases
+        patterns:
+          - "Microsoft.AspNetCore*"
+          - "Microsoft.EntityFrameworkCore*"
+          - "Microsoft.Extensions*"

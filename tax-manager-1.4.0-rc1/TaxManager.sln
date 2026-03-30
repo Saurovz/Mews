@@ -1,0 +1,164 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC64EAC3-C9C7-4788-A8C5-00EFD9E3590C}"
+	ProjectSection(SolutionItems) = preProject
+		.\.gitattributes = .\.gitattributes
+		.\.gitignore = .\.gitignore
+		.\build.sh = .\build.sh
+		.\Dockerfile = .\Dockerfile
+		.\.dockerignore = .\.dockerignore
+		.\NuGet.config = .\NuGet.config
+		.\Pulumi.yaml = .\Pulumi.yaml
+		.\README.md = .\README.md
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxManager.Api", "src\hosts\TaxManager.Api\TaxManager.Api.csproj", "{F64C9EE2-4A4B-4397-B304-344A97161E5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxManager.UnitTests", "src\tests\TaxManager.UnitTests\TaxManager.UnitTests.csproj", "{A3399B9F-FFD9-4A6B-80C3-D0BA0497B64E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxManager.Infrastructure", "infra\TaxManager.Infrastructure\TaxManager.Infrastructure.csproj", "{1E61A779-689E-4D1F-8447-37FA7A47884F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1DE23159-9E88-4F40-B9E0-1F486FEE7933}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hosts", "hosts", "{5250A158-814B-44A0-A9FF-A0C5C5E81A64}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7873E3B8-3022-42DF-BC43-0E3499D0C47F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxManager.IntegrationTests", "src\tests\TaxManager.IntegrationTests\TaxManager.IntegrationTests.csproj", "{638CD1EA-D1E6-4497-A8F7-218738144C05}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaxManager.Benchmarks", "src\tests\TaxManager.Benchmarks\TaxManager.Benchmarks.csproj", "{BB6273A8-F0F8-4EE7-9AA8-F2A935C19E12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infra", "infra", "{8A7B1009-1CAB-49ED-970B-CBDCB855C9CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxManager.Aspire.AppHost", "src\hosts\TaxManager.Aspire.AppHost\TaxManager.Aspire.AppHost.csproj", "{856F6FD8-6B24-47DF-80F5-F07C482E73EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxManager.Aspire.ServiceDefaults", "src\hosts\TaxManager.Aspire.ServiceDefaults\TaxManager.Aspire.ServiceDefaults.csproj", "{766EBDE9-19D4-41D2-9FA9-B30F6863E188}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{B6962F6B-A338-4AC8-A9AC-1E305EE9893A}"
+	ProjectSection(SolutionItems) = preProject
+		.\.github\dependabot.yml = .\.github\dependabot.yml
+		.\.github\PULL_REQUEST_TEMPLATE.md = .\.github\PULL_REQUEST_TEMPLATE.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{643B3076-CA7D-4A06-B527-7AC2592DCE4A}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\create-release.yml = .github\workflows\create-release.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows_template", "workflows_template", "{9B16A149-15D1-496F-9573-2126E81E2515}"
+	ProjectSection(SolutionItems) = preProject
+		.\.github\workflows\build-publish.yml = .\.github\workflows\build-publish.yml
+		.\.github\workflows\infrastructure-preview.yml = .\.github\workflows\infrastructure-preview.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxManager.Aspire.IntegrationTests", "src\tests\TaxManager.Aspire.IntegrationTests\TaxManager.Aspire.IntegrationTests.csproj", "{36F1B647-10EF-42EB-AA74-EB7425F927B4}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "TaxManager.Web", "src\hosts\TaxManager.Web\TaxManager.Web.esproj", "{759A30B5-59D0-42A5-9379-C8D368F75DAE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modules", "modules", "{C3861702-B47E-478C-BF5F-611C54AB8FE1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{D4C875C7-0135-4394-8A31-465656DB7520}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxManager.Domain", "src\modules\core\TaxManager.Domain\TaxManager.Domain.csproj", "{1DA3E151-430B-4233-9D69-476523CE4082}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxManager.Application", "src\modules\core\TaxManager.Application\TaxManager.Application.csproj", "{548A84A7-55E4-4CB1-949F-B0155B60C1A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxManager.EntityFrameworkCore", "src\modules\core\TaxManager.EntityFrameworkCore\TaxManager.EntityFrameworkCore.csproj", "{282C1F08-AF11-4940-90BF-1173E0EEF9F5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{D134AD49-07B2-4303-B8AA-BE82CACE37BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxManager.DbMigrationService", "src\TaxManager.DbMigrationService\TaxManager.DbMigrationService.csproj", "{9F71F176-2BB4-40E6-81C9-43E47BC3573B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F64C9EE2-4A4B-4397-B304-344A97161E5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F64C9EE2-4A4B-4397-B304-344A97161E5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F64C9EE2-4A4B-4397-B304-344A97161E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F64C9EE2-4A4B-4397-B304-344A97161E5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3399B9F-FFD9-4A6B-80C3-D0BA0497B64E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3399B9F-FFD9-4A6B-80C3-D0BA0497B64E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3399B9F-FFD9-4A6B-80C3-D0BA0497B64E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3399B9F-FFD9-4A6B-80C3-D0BA0497B64E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E61A779-689E-4D1F-8447-37FA7A47884F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E61A779-689E-4D1F-8447-37FA7A47884F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E61A779-689E-4D1F-8447-37FA7A47884F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E61A779-689E-4D1F-8447-37FA7A47884F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{638CD1EA-D1E6-4497-A8F7-218738144C05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{638CD1EA-D1E6-4497-A8F7-218738144C05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{638CD1EA-D1E6-4497-A8F7-218738144C05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{638CD1EA-D1E6-4497-A8F7-218738144C05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB6273A8-F0F8-4EE7-9AA8-F2A935C19E12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB6273A8-F0F8-4EE7-9AA8-F2A935C19E12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB6273A8-F0F8-4EE7-9AA8-F2A935C19E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB6273A8-F0F8-4EE7-9AA8-F2A935C19E12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{856F6FD8-6B24-47DF-80F5-F07C482E73EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{856F6FD8-6B24-47DF-80F5-F07C482E73EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{856F6FD8-6B24-47DF-80F5-F07C482E73EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{856F6FD8-6B24-47DF-80F5-F07C482E73EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{766EBDE9-19D4-41D2-9FA9-B30F6863E188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{766EBDE9-19D4-41D2-9FA9-B30F6863E188}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{766EBDE9-19D4-41D2-9FA9-B30F6863E188}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{766EBDE9-19D4-41D2-9FA9-B30F6863E188}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36F1B647-10EF-42EB-AA74-EB7425F927B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36F1B647-10EF-42EB-AA74-EB7425F927B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36F1B647-10EF-42EB-AA74-EB7425F927B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36F1B647-10EF-42EB-AA74-EB7425F927B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{759A30B5-59D0-42A5-9379-C8D368F75DAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{759A30B5-59D0-42A5-9379-C8D368F75DAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{759A30B5-59D0-42A5-9379-C8D368F75DAE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{759A30B5-59D0-42A5-9379-C8D368F75DAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{759A30B5-59D0-42A5-9379-C8D368F75DAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{759A30B5-59D0-42A5-9379-C8D368F75DAE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1DA3E151-430B-4233-9D69-476523CE4082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA3E151-430B-4233-9D69-476523CE4082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DA3E151-430B-4233-9D69-476523CE4082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA3E151-430B-4233-9D69-476523CE4082}.Release|Any CPU.Build.0 = Release|Any CPU
+		{548A84A7-55E4-4CB1-949F-B0155B60C1A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{548A84A7-55E4-4CB1-949F-B0155B60C1A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{548A84A7-55E4-4CB1-949F-B0155B60C1A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{548A84A7-55E4-4CB1-949F-B0155B60C1A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{282C1F08-AF11-4940-90BF-1173E0EEF9F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{282C1F08-AF11-4940-90BF-1173E0EEF9F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{282C1F08-AF11-4940-90BF-1173E0EEF9F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{282C1F08-AF11-4940-90BF-1173E0EEF9F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F71F176-2BB4-40E6-81C9-43E47BC3573B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F71F176-2BB4-40E6-81C9-43E47BC3573B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F71F176-2BB4-40E6-81C9-43E47BC3573B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F71F176-2BB4-40E6-81C9-43E47BC3573B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F64C9EE2-4A4B-4397-B304-344A97161E5A} = {5250A158-814B-44A0-A9FF-A0C5C5E81A64}
+		{A3399B9F-FFD9-4A6B-80C3-D0BA0497B64E} = {7873E3B8-3022-42DF-BC43-0E3499D0C47F}
+		{1E61A779-689E-4D1F-8447-37FA7A47884F} = {8A7B1009-1CAB-49ED-970B-CBDCB855C9CF}
+		{5250A158-814B-44A0-A9FF-A0C5C5E81A64} = {1DE23159-9E88-4F40-B9E0-1F486FEE7933}
+		{638CD1EA-D1E6-4497-A8F7-218738144C05} = {7873E3B8-3022-42DF-BC43-0E3499D0C47F}
+		{BB6273A8-F0F8-4EE7-9AA8-F2A935C19E12} = {7873E3B8-3022-42DF-BC43-0E3499D0C47F}
+		{856F6FD8-6B24-47DF-80F5-F07C482E73EA} = {5250A158-814B-44A0-A9FF-A0C5C5E81A64}
+		{766EBDE9-19D4-41D2-9FA9-B30F6863E188} = {5250A158-814B-44A0-A9FF-A0C5C5E81A64}
+		{B6962F6B-A338-4AC8-A9AC-1E305EE9893A} = {FC64EAC3-C9C7-4788-A8C5-00EFD9E3590C}
+		{643B3076-CA7D-4A06-B527-7AC2592DCE4A} = {B6962F6B-A338-4AC8-A9AC-1E305EE9893A}
+		{9B16A149-15D1-496F-9573-2126E81E2515} = {B6962F6B-A338-4AC8-A9AC-1E305EE9893A}
+		{36F1B647-10EF-42EB-AA74-EB7425F927B4} = {7873E3B8-3022-42DF-BC43-0E3499D0C47F}
+		{759A30B5-59D0-42A5-9379-C8D368F75DAE} = {5250A158-814B-44A0-A9FF-A0C5C5E81A64}
+		{C3861702-B47E-478C-BF5F-611C54AB8FE1} = {1DE23159-9E88-4F40-B9E0-1F486FEE7933}
+		{D4C875C7-0135-4394-8A31-465656DB7520} = {C3861702-B47E-478C-BF5F-611C54AB8FE1}
+		{1DA3E151-430B-4233-9D69-476523CE4082} = {D4C875C7-0135-4394-8A31-465656DB7520}
+		{548A84A7-55E4-4CB1-949F-B0155B60C1A0} = {D4C875C7-0135-4394-8A31-465656DB7520}
+		{282C1F08-AF11-4940-90BF-1173E0EEF9F5} = {D4C875C7-0135-4394-8A31-465656DB7520}
+		{9F71F176-2BB4-40E6-81C9-43E47BC3573B} = {D134AD49-07B2-4303-B8AA-BE82CACE37BF}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A95CDC3D-BC8E-4536-987E-4B44BCB2B037}
+	EndGlobalSection
+EndGlobal

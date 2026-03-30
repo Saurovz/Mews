@@ -1,0 +1,4 @@
+﻿name: TaxManager
+description: Mews service
+runtime: dotnet
+main: infra/TaxManager.Infrastructure/

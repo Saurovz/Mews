@@ -1,0 +1,20 @@
+config:
+  azure-native:tenantId: afdb37c2-13f1-4a78-b91e-85749ac8e807
+  TaxManager:container-registry-username: 772eb7f9-3bf0-49d4-a542-65675202437c
+  TaxManager:cpu-utilization-scale-percentage: "60"
+  TaxManager:cpus-per-container: "1"
+  TaxManager:gibibytes-of-memory-per-container: "2"
+  TaxManager:locations: West Europe
+  TaxManager:max-replicas: "1"
+  TaxManager:min-replicas: "1"
+  TaxManager:service-environment: dev
+  TaxManager:service-name: tax-manager
+  TaxManager:resource-group: tax-manager-dev
+  TaxManager:shared-stack-name: mews/shared/develop
+  azure-native:subscriptionId: 6e871f22-3d56-4001-a177-12533bef4e46
+  TaxManager:container-registry-password:
+    secure: AAABAF/jJYiZHrAMs8MBNHeqGdPJ8e5ZH2KwH5GPcsa/j2i3aEq8z5pdnSnLK6NJH4tAGM0Z78CaFdsGzh1Ge+1pjBnnSlFE
+  TaxManager:newrelic-license-key:
+    secure: AAABACmz8310yr09Xc6BRXJCBiug5W4YDXO/m4RUKJlLqYz1FMCbTNUtel9KLmcH65QnKehKNHZ5syUtikwGNI4MmtXoIl3k
+  TaxManager:some-secret-value:
+    secure: AAABAG/dLWsK0LB25sNE/ZVDkuCfTtxSWqctg/FxifEDURH+OSe2VWMnexTslNiEVw==
