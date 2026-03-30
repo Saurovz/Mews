@@ -1,0 +1,25 @@
+Both have functions for JSON and JSONB data storage (although MongoDB calls the latter “BSON”).
+
+
+MongoDB
+For unstructured data
+For Dynamic Json
+Easy to Modify JSON data inside the data store — it has tools for updating individual fields.
+Perfect for dynamic queries of frequently written or read data. Performs well.
+
+
+PostGre
+If ACID compliance is important; in Financial Application
+For Static JSON
+To Modify JSON data in the data store - Whole doc to be extracted, changed & rewrite back.
+
+
+--------------
+MongoDB limits its BSON format to a maximum of 64 bits for representing an integer or floating point number. Postgres’s JSONB format isn’t limited.
+Postgres provides data constraint and validation functions, which help to ensure JSON documents are more meaningful. E.g. It stops you from storing alphabetical characters when only numerical values make sense.
+MongoDB offers automatic database sharding, for easy horizontal scaling of JSON data storage; Postgres installation scaling is usually vertical. You can scale Postgres horizontally, but this tends to be trickier or takes third-party help.
+MongoDB also lets you increase your write throughput by deferring writing to disk. You might lose some data that way, but it can be good for users who are less worried about persisting their data.
+
+
+https://www.quora.com/What-is-the-best-way-to-store-JSON-data-in-MongoDB
+

@@ -1,0 +1,220 @@
+orderItem --> tax calc in account
+C4 design model
+-----------------
+
+git init
+git add .
+git commit -m "Files Added"
+git push -u origin main
+(git push <REMOTE> <branchName>, u : upstream)
+
+//Overtime thrWil be Branches in Local & also on Remote
+//to see Local Branch
+git branch
+//to see Remote Branch
+git branch -r
+
+**Create a new Branch while on main in Local
+git branch feature/login-system
+**OR, Create a new branch locally n switch to it at the same time & Then push it to REMOTE
+git checkout -b aNewBranch
+//goto the main branch
+git switch main
+//goto new branch 
+git switch aNewBranch
+//make some changes in files & commit locally
+git add . 
+git commit -m "done"
+//PUSH this new Branch to remote
+git push -u origin aNewBranch 
+(new branch will be created in REPO)
+
+**TIME to merge aNewBranch to main
+ Create a PR(pull Req) 
+//switch to main
+git switch main
+ (but still we dont see the updatedted content as switching is happening from local only. we need to get the remote-main)
+git pull  [ this is Fetch (d change) +  Merge] 
+(done)
+git show ( will show the history)
+
+***U pushed in Main MISTAKNLY & need to correct yourself by reverting & getting ris of the history
+//to get to previous version
+git log (to get d prev-hash)
+git revert <commit-hash>   & then Ctrl X
+git log ( will still have the history. To remove the history)
+git reset --hard <commit-hash>
+git log  ( history gone, but all these are happening LOCALLY)
+git push --force origin main
+
+ 
+
+
+
+
+
+
+
+
+
+
+-----------------
+
+1. Controller - Dont write Business Logics here
+2. Repository Pattern - (Create separate project[class library]for reuseablity)
+        This Encaptulate all Logics reqd for Data Acess from the Domain Model
+
+***Logging is Impt in prod***
+Opt for Strutured Logging (JSON)
+Log Levels : Information, Warning, Debug, Error
+ For Prod: "Information" only suffice to avoid diff log-cluttering
+           or Use Information & Warning if needed
+           Debug & Error are used in "appsettings.development"
+Incude Serilog and configure as Extension for each MServices so tat for each service we have a log file
+
+For Distributed & Centralized Logging and Sampling, Open Telemetry can be used
+
+***Exception Handling***
+WAYS:
+Traditional Try Catch blocks
+Built-In Exception Handling Middleware
+Custom Middleware to Handle Exceptions
+MODERN WAy : Use Global Exceptionhandling with .Net 8 introduced IExceptionHandler [Highly Recommended]
+
+No more writing of try catch block in each method.
+We include Logger(serilog) too as error log here.
+ 
+
+*****Minimal APi can be build using IEndpointRouteBuilder***
+Like MapPost(), MapGet(), etc
+
+****API Verioning***
+
+***C4 design model***
+
+***CORS***
+If API is called from diff domains(by diff clients), the request will be blocked by the API.
+So implement CORS(Cross Origin resource sharing)
+
+***PAGINATION****
+
+***Filtering, searching, and sorting to manage large datasets efficiently****
+
+**Add HATEOAS for hypermedia-driven APIs**
+
+**Document everything with Swagger**
+
+**Caching & Rate Limiting**
+
+**Shift F2 - to add a.cs file**
+
+**Both EF & DApper ORM can be used in the same proj. normally used for CQRS...Read with dapper for Perf & Complex Queries & Writes with EF **
+
+**Use data transfer object (DTO) to transport data between client & server AND not the Model Entities coz 
+Model's can have data Annotations, can have navigational properties, etc which are not reqd by DTO.
+Also DTO obj may have some aditonal properties aprt from the Model Objs for the Client.
+DTo can be created as Record & Not class (Read Page: 75)
+
+
+**to work on ASP.Net Core Middleware one has to use:
+          Run() - to complete middleware execution. used at the end of the middleware pipeline because it stops the pipeline from further processing.
+		app.Run(async context => { await context.response.WriteAsync("Hello World"); });
+          Use() - to add a new middleware in pipeline
+                app.Use(async (context, next) => {
+		//do something b4 the next middleware call
+                await next.invoke();
+		//do something after the next midleware has executed
+		}))    
+          Next() - to pass execution to the next middleware
+          Map()  - to map middleware to a spefic url  . Also MapGet() & MapPost()
+                  app.Map("/path", subApp =>
+  			subApp.Use(async (context, next) =>
+                         { //middle logic specific to "/path" } 
+                        );
+**MONAD : like option, result, etc used for functional programming
+     
+
+....................
+Parsing the Static Files in MEWS to extract the Data (Bob used this)
+https://learn.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/get-started/syntax-analysis         
+
+...................
+React
+
+Vite
+Axios
+Material UI (DatePicker, Grid, TreeView, etc.)
+https://mui.com/x/react-date-pickers/date-picker/
+
+
+
+From the very high level requirement, we need below skills 
+1. React based UI (dynamic component creation)
+2. MiddleWare(Microservices in C#.Net core working on Async/Task/Linq/Json Serializer and cosmos/mongo db)
+   writing UTCs
+Better to have exp in RuleEngine, Docker and K8
+Below items remain open for now and will be cleared in D&D
+1. Integration
+2. Azure DevOps(SDLC automation)
+3. Azure Cloud deployment/monitoring
+      
+HandsOn in developing Microservices in C#.Net Core levaraging Async-Task/Linq/Json Serializer and Document Databases like Cosmos or Mongo db
+Expert in Interservices commnication using EventBased Architecture, Distributed Caching, implementing rateLimiting policies, circuit-breaker & aggregation pattern
+Well versed in C# Object Oriented programming. 
+Good in advanced ORM : EntityFramework and Dapper 
+Writing UTCs using MOQ or Rhinomocks
+and creating/deploying images in Docker targetting Kubernetes environment
+
+
+HttpClient and HttpClientFactory
+
+When to use Delegate Handlers and how to add mutiple Delegate Handlers
+How do you do interservices communication
+How to implement a Policy to try calling d MS 4-times b4 cutoff 
+
+JsonSerializer serializes to stonglyTyped object; what if the type is Dynamic/Anonymous?
+
+How do you secure Token(jwt) in Client side...localStorage vs httpOnly cookie
+why need a refreshToken & whr do u store it?
+
+when to record vs class
+What is ratelmitig & Throttling? Does it handles resiliencey? 
+What is DTO and Model Entity. How you convert one to another (Automapper)
+
+How to dcument API? Why have u used swagger?
+Have u used MediatR & why ?
+
+
+
+
+select * from Hobbies
+select * from Employee
+--How many Department has emp with maximum age below 50
+  -- What's d max age of Employee in each  Department
+  select Department, MAX(age) as Max_Age FROM Employee GROUP by	Department
+  -- How many Employees r thr with max age > 50
+  --SubQuery
+  select count(*) from
+   (select Department, MAX(age) as Max_Age FROM Employee GROUP by Department) as ma
+  WHERE Max_Age >50
+  
+  --CTE
+  WITH ma As (select Department, MAX(age) as Max_Age FROM Employee GROUP by Department)
+   select count(*) from ma  WHERE Max_Age >50
+   
+  
+ --Employees with max age > 50 and having the letter 'm' in their name 
+  WITH ma As (select Department, MAX(age) as Max_Age FROM Employee GROUP by Department),
+       m As (select * from Employee where name like '%m%')
+   Select * from m LEFT JOIN ma ON m.Department = m.Department
+   
+ --One Emp can have multiple Hobbies. How you estabish this relation
+ select * from Hobbies
+ select * from Employee
+ 
+ 
+ --junctionTables(many2many relations)
+   
+   
+
+
