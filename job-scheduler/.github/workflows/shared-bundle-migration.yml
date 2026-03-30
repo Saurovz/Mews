@@ -1,0 +1,108 @@
+﻿name: EF Core Bundle Creation
+
+on:
+  workflow_call:
+    inputs:
+      project_path:
+        required: true
+        type: string
+      migration_bundles_folder:
+        required: true
+        type: string
+jobs:
+  create-bundle:
+    runs-on: ubuntu-latest
+    env:
+        PROJECT_PATH: ${{ inputs.project_path }}
+        DB_CONNECTION_STRING: "${{ secrets.DB_SERVER }};Database=${{ secrets.DB_NAME }};User Id=${{ secrets.DB_USER }};Password=${{ secrets.DB_PASSWORD }};TrustServerCertificate=True;"
+        MIGRATION_BUNDLES_FOLDER: ${{ inputs.migration_bundles_folder }}
+    outputs:
+        pending_migrations: ${{ steps.check_pending_migrations.outputs.pending_migrations }}
+        bundle_name: ${{ steps.generate_bundle_path.outputs.bundle_name}}
+        package_version: ${{ steps.version.outputs.package_version }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+          source-url: https://pkgs.dev.azure.com/mews/_packaging/mews/nuget/v3/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+
+      - name: Restore workloads
+        run: dotnet workload restore
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore
+
+      - name: Install EF Tool
+        run: dotnet tool install --global dotnet-ef
+
+      - name: Check for Pending Migrations
+        id: check_pending_migrations
+        run: |
+           MIGRATIONS_OUTPUT=$(dotnet ef migrations list -p "${{ env.PROJECT_PATH }}" --connection "${{ env.DB_CONNECTION_STRING }}")
+           echo "$MIGRATIONS_OUTPUT"
+           if echo "$MIGRATIONS_OUTPUT" | grep -q "(Pending)"; then
+             echo "Pending migrations detected."
+             echo "pending_migrations=true" >> $GITHUB_OUTPUT
+           else
+             echo "No pending migrations found."
+             echo "pending_migrations=false" >> $GITHUB_OUTPUT
+           fi
+
+      - name: Create a package version
+        id: version
+        if: ${{ steps.check_pending_migrations.outputs.pending_migrations == 'true' }}
+        run: |
+          PACKAGE_VERSION=migration-bundle-1.0.${{ github.run_number }}.${{ github.run_attempt }}
+          echo "package_version=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Generate BUNDLE PATH
+        if: ${{ steps.check_pending_migrations.outputs.pending_migrations == 'true' }}
+        id: generate_bundle_path
+        run: |
+          MIGRATION_BUNDLE_NAME="migration_bundle_${{ steps.version.outputs.package_version }}"
+          BUNDLE_PATH="${{ env.MIGRATION_BUNDLES_FOLDER }}/${MIGRATION_BUNDLE_NAME}.dll"
+          echo "bundle_name=$MIGRATION_BUNDLE_NAME" >> $GITHUB_OUTPUT
+          echo "bundle_path=$BUNDLE_PATH" >> $GITHUB_OUTPUT
+
+      - name: Generate Migrations Bundle
+        if: ${{ steps.check_pending_migrations.outputs.pending_migrations == 'true' }}
+        run: |
+          dotnet ef migrations bundle \
+            --runtime linux-x64 \
+            --output "${{ steps.generate_bundle_path.outputs.bundle_path }}" \
+            --project "${{ env.PROJECT_PATH }}" \
+             -- --connection "${{ env.DB_CONNECTION_STRING }}"
+
+      - name: Compress Migration Bundle
+        if: ${{ steps.check_pending_migrations.outputs.pending_migrations == 'true' }}
+        run: |
+          zip -j "${{ steps.generate_bundle_path.outputs.bundle_name }}.zip" "${{ steps.generate_bundle_path.outputs.bundle_path }}"
+
+
+      - name: Bump version and push tag
+        id: tag_version
+        if: ${{ steps.check_pending_migrations.outputs.pending_migrations == 'true' }}
+        uses: mathieudutour/github-tag-action@v6.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          custom_tag: ${{ steps.version.outputs.package_version }}
+          tag_prefix: ""
+
+      - name: Create a GitHub release WITH migration bundle artifact
+        if: ${{ steps.check_pending_migrations.outputs.pending_migrations == 'true' }}
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: "Release ${{ steps.tag_version.outputs.new_tag }}"
+          body: |
+            This release contains the EF Core migration bundle.
+          artifacts: |
+            ${{ steps.generate_bundle_path.outputs.bundle_name }}.zip

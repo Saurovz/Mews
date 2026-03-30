@@ -1,0 +1,16 @@
+name: Bundle migrations and publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to run the workflow against"
+        required: true
+
+jobs:
+  ef-core-bundle-creation:
+    uses: ./.github/workflows/shared-bundle-migration.yml
+    with:
+      project_path: "./src/modules/core/Mews.Job.Scheduler.Core.EntityFrameworkCore/Mews.Job.Scheduler.Core.EntityFrameworkCore.csproj"
+      migration_bundles_folder: "./migrations_bundles"
+    secrets: inherit

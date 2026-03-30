@@ -1,0 +1,67 @@
+name: Infrastructure Preview
+on: pull_request
+
+concurrency:
+  group: ${{ github.repository }}-infrastructure
+  cancel-in-progress: false
+
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read # This is required for actions/checkout
+
+jobs:
+  tags:
+    uses: MewsSystems/mews-infrastructure/.github/workflows/reusable-infra-tags.yaml@main
+    secrets:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  preview:
+    name: Preview ${{ matrix.stack }}
+    needs:
+      - tags
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        stack: ${{ fromJSON(vars.PULUMI_STACKS) }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Dump tags
+        run: echo '${{ needs.tags.outputs.custom_properties }}' > ${{ github.workspace }}/tags.json
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+          source-url: https://pkgs.dev.azure.com/mews/_packaging/mews/nuget/v3/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+
+      - uses: pozetroninc/github-action-get-latest-release@v0.8.0
+        id: latest-release
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ vars.AZURE_IDENTITY_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          allow-no-subscriptions: true
+
+      - name: Preview ${{ matrix.stack }}
+        uses: pulumi/actions@v6
+        with:
+          command: preview
+          stack-name: mews/${{ matrix.stack }}
+          work-dir: ./
+          diff: true
+          refresh: true
+        env:
+          PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
+          TARGET_IMAGE_NAME: /${{ github.repository }}:${{ steps.latest-release.outputs.release }}
+          ARM_CLIENT_ID: ${{ vars.AZURE_IDENTITY_ID }}
+          ARM_USE_OIDC: true
+          NEW_RELIC_API_KEY: ${{ secrets.NEW_RELIC_API_KEY }}
+          NEW_RELIC_ACCOUNT_ID: ${{ vars.NEW_RELIC_ACCOUNT_ID }}
+          NEW_RELIC_REGION: ${{ vars.NEW_RELIC_REGION }}
+          TAGS_FILE_PATH: ${{ github.workspace }}/tags.json

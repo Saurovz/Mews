@@ -1,0 +1,220 @@
+variable "Azure" {
+    type = "AzureAccount"
+
+    value "azure-development-subscription" {
+        environment = ["development"]
+    }
+
+    value "azure-demo-subscription" {
+        environment = ["demo"]
+    }
+
+    value "azure-production-subscription" {
+        environment = ["production"]
+    }
+
+    value "azure-test-subscription" {
+        description = ""
+        environment = ["test"]
+    }
+}
+
+variable "NugetFeedEndpoints" {
+    value "{\"endpointCredentials\": [{\"endpoint\":\"https://pkgs.dev.azure.com/mews/_packaging/mews/nuget/v3/index.json\", \"username\":\"docker\", \"password\":\"#{AzureDevopsNugetFeedToken}\"}]}" {}
+}
+
+variable "PulumiStackName" {
+    value "mews/AzureDevelopment" {
+        environment = ["development"]
+    }
+
+    value "mews/AzureDemo" {
+        environment = ["demo"]
+    }
+
+    value "mews/AzureProduction" {
+        environment = ["production"]
+    }
+
+    value "mews/AzureTest" {
+        description = ""
+        environment = ["test"]
+    }
+}
+
+variable "ServiceName" {
+    value "job-scheduler" {}
+}
+
+variable "RepositoryName" {
+    value "job-scheduler" {}
+}
+
+variable "TargetACRHostWeu" {
+    value "#{ACRHostDevelopmentWeu}" {
+        environment = ["development"]
+    }
+
+    value "#{ACRHostDemoWeu}" {
+        environment = ["demo"]
+    }
+
+    value "#{ACRHostProductionWeu}" {
+        environment = ["production"]
+    }
+}
+
+variable "TargetACRHostNeu" {
+    value "#{ACRHostDevelopmentNeu}" {
+        environment = ["development"]
+    }
+
+    value "#{ACRHostDemoNeu}" {
+        environment = ["demo"]
+    }
+
+    value "#{ACRHostProductionNeu}" {
+        environment = ["production"]
+    }
+}
+
+variable "DatabaseUsername" {
+    value "Mews-78df0d81-91ae-43da-adf3-44754c2da74a" {
+        environment = ["development"]
+    }
+
+    value "Mews-412d7787-147c-4b84-94ee-f9c74f669dc4" {
+        description = ""
+        environment = ["demo"]
+    }
+
+    value "Mews-cf07c0b9-a32d-4d88-b707-3dd70e713970" {
+        description = ""
+        environment = ["production"]
+    }
+
+    value "Mews-78df0d81-91ae-43da-adf3-44754c2da74a" {
+        description = ""
+        environment = ["test"]
+    }
+}
+
+variable "DatabaseName" {
+    value "job-scheduler-dev" {
+        environment = ["development"]
+    }
+
+    value "job-scheduler-demo" {
+        description = ""
+        environment = ["demo"]
+    }
+
+    value "job-scheduler-prod" {
+        description = ""
+        environment = ["production"]
+    }
+
+    value "job-scheduler-test" {
+        description = ""
+        environment = ["test"]
+    }
+}
+
+variable "DatabaseServer" {
+    value "job-scheduler-dev-job-scheduler-dev-sql-weu.database.windows.net" {
+        environment = ["development"]
+    }
+
+    value "job-scheduler-demo-job-scheduler-demo-sql-weu.database.windows.net" {
+        description = ""
+        environment = ["demo"]
+    }
+
+    value "job-scheduler-prod-job-scheduler-prod-sql-weu.database.windows.net" {
+        description = ""
+        environment = ["production"]
+    }
+
+    value "job-scheduler-test-job-scheduler-test-sql-gwc.database.windows.net" {
+        description = ""
+        environment = ["test"]
+    }
+}
+
+variable "ShortEnv" {
+    value "dev" {
+        environment = ["development"]
+    }
+
+    value "demo" {
+        environment = ["demo"]
+    }
+
+    value "prod" {
+        environment = ["production"]
+    }
+
+    value "test" {
+        description = ""
+        environment = ["test"]
+    }
+}
+
+variable "SecretRotationAppRegName" {
+    value "job-scheduler-s2s-demo" {
+        environment = ["demo"]
+    }
+
+    value "job-scheduler-s2s-prod" {
+        environment = ["production"]
+    }
+
+    value "job-scheduler-s2s-dev" {
+        environment = ["development", "test"]
+    }
+}
+
+variable "SecretRotationKvName" {
+    value "job-scheduler-demo-main" {
+        environment = ["demo"]
+    }
+
+    value "job-scheduler-prod-main" {
+        environment = ["production"]
+    }
+
+    value "job-scheduler-dev-main" {
+        environment = ["development", "test"]
+    }
+}
+
+variable "SecretRotationKvSecretKey" {
+    value "job-scheduler-s2s-demo-secret" {
+        environment = ["demo"]
+    }
+
+    value "job-scheduler-s2s-prod-secret" {
+        environment = ["production"]
+    }
+
+    value "job-scheduler-s2s-dev-secret" {
+        environment = ["development", "test"]
+    }
+}
+
+variable "OctopusGitCredentialId" {
+    value "GitCredentials-22" {}
+}
+
+variable "TargetACRHostGwc" {
+    value "#{ACRHostTestGwc}" {
+        environment = ["test"]
+    }
+}
+variable "GH_REPO_NAME" {
+    value "job-scheduler" {}
+}
+
+variable "GH_ORG" {
+    value "MewsSystems" {}
+}

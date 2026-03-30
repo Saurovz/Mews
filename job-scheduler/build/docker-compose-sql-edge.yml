@@ -1,0 +1,22 @@
+# This file is used for loading a local instance of sql server edge
+version: "3.8"
+services:
+    sql-server-edge-db:
+        hostname: mewsedgedb
+        container_name: mews-azure-sql-edge-container
+        image: mcr.microsoft.com/azure-sql-edge
+        ports:
+           - "1433:1433"
+        environment:
+          ACCEPT_EULA: Y
+          SA_PASSWORD: Test1234!
+        networks:
+          - mews-server-web-network
+        volumes:
+          - ./database/msqqldata:/var/opt/mssql/data
+volumes:
+  sql-server-db-data:
+    driver: local
+networks:
+  mews-server-web-network:
+    driver: bridge

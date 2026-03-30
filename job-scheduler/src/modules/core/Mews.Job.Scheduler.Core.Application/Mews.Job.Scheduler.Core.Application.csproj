@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MediatR" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\buildingBlocks\Mews.Job.Scheduler.BuildingBlocks.Application\Mews.Job.Scheduler.BuildingBlocks.Application.csproj" />
+    <ProjectReference Include="..\..\..\buildingBlocks\Mews.Job.Scheduler.BuildingBlocks.Domain\Mews.Job.Scheduler.BuildingBlocks.Domain.csproj" />
+    <ProjectReference Include="..\Mews.Job.Scheduler.Core.Domain\Mews.Job.Scheduler.Core.Domain.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,246 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC64EAC3-C9C7-4788-A8C5-00EFD9E3590C}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		build.ps1 = build.ps1
+		build.sh = build.sh
+		Dockerfile = Dockerfile
+		NuGet.config = NuGet.config
+		Pulumi.yaml = Pulumi.yaml
+		README.md = README.md
+		Pulumi.AzureDemo.yaml = Pulumi.AzureDemo.yaml
+		Pulumi.AzureDevelopment.yaml = Pulumi.AzureDevelopment.yaml
+		Pulumi.AzureProduction.yaml = Pulumi.AzureProduction.yaml
+		Directory.Packages.props = Directory.Packages.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mews.Job.Scheduler", "src\hosts\Mews.Job.Scheduler\Mews.Job.Scheduler.csproj", "{F64C9EE2-4A4B-4397-B304-344A97161E5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mews.Job.Scheduler.UnitTests", "tests\Mews.Job.Scheduler.UnitTests\Mews.Job.Scheduler.UnitTests.csproj", "{A3399B9F-FFD9-4A6B-80C3-D0BA0497B64E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mews.Job.Scheduler.Infrastructure", "infra\Mews.Job.Scheduler.Infrastructure\Mews.Job.Scheduler.Infrastructure.csproj", "{1E61A779-689E-4D1F-8447-37FA7A47884F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1DE23159-9E88-4F40-B9E0-1F486FEE7933}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "hosts", "hosts", "{5250A158-814B-44A0-A9FF-A0C5C5E81A64}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7873E3B8-3022-42DF-BC43-0E3499D0C47F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{F0F01444-9533-43DE-844B-B3AD9468E1E7}"
+	ProjectSection(SolutionItems) = preProject
+		build\common.env = build\common.env
+		build\docker-compose.yml = build\docker-compose.yml
+		build\docker-compose-sql-server.yml = build\docker-compose-sql-server.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mews.Job.Scheduler.Benchmarks", "tests\Mews.Job.Scheduler.Benchmarks\Mews.Job.Scheduler.Benchmarks.csproj", "{BB6273A8-F0F8-4EE7-9AA8-F2A935C19E12}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "infra", "infra", "{8A7B1009-1CAB-49ED-970B-CBDCB855C9CF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{44A8660E-934B-4A44-BF67-4C897FADCC23}"
+	ProjectSection(SolutionItems) = preProject
+		build\scripts\help.txt = build\scripts\help.txt
+		build\scripts\config.json = build\scripts\config.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bash", "bash", "{BCA3DC50-66A3-421B-8511-1EB5CBDA8677}"
+	ProjectSection(SolutionItems) = preProject
+		build\scripts\bash\help.sh = build\scripts\bash\help.sh
+		build\scripts\bash\helpers.sh = build\scripts\bash\helpers.sh
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "powershell", "powershell", "{5345A46B-06FD-442B-B641-926208ED9E51}"
+	ProjectSection(SolutionItems) = preProject
+		build\scripts\powershell\help.ps1 = build\scripts\powershell\help.ps1
+		build\scripts\powershell\helpers.ps1 = build\scripts\powershell\helpers.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "modules", "modules", "{DA28D298-4F00-4448-A672-7033EA35F0F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "core", "core", "{1E4FDD6C-1965-48B1-906D-141755A6B181}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mews.Job.Scheduler.Core.EntityFrameworkCore", "src\modules\core\Mews.Job.Scheduler.Core.EntityFrameworkCore\Mews.Job.Scheduler.Core.EntityFrameworkCore.csproj", "{1454E871-7A6F-45F2-8F34-2077BDF1FAA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mews.Job.Scheduler.Core.Domain", "src\modules\core\Mews.Job.Scheduler.Core.Domain\Mews.Job.Scheduler.Core.Domain.csproj", "{1F9BF8EA-134F-40BC-9386-70B2E3B6B771}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "buildingBlocks", "buildingBlocks", "{6B13F25C-3126-49CD-AB71-B8D9CF2EDD3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mews.Job.Scheduler.BuildingBlocks.Domain", "src\buildingBlocks\Mews.Job.Scheduler.BuildingBlocks.Domain\Mews.Job.Scheduler.BuildingBlocks.Domain.csproj", "{3A508698-2EF3-4C3C-A963-2750A0FAB82B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mews.Job.Scheduler.BuildingBlocks.Configuration", "src\buildingBlocks\Mews.Job.Scheduler.BuildingBlocks.Configuration\Mews.Job.Scheduler.BuildingBlocks.Configuration.csproj", "{E27B6600-E39F-467D-9BDF-0160E158E655}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mews.Job.Scheduler.BuildingBlocks.Infrastructure", "src\buildingBlocks\Mews.Job.Scheduler.BuildingBlocks.Infrastructure\Mews.Job.Scheduler.BuildingBlocks.Infrastructure.csproj", "{540D7102-05FB-4D97-961F-2840C4EFF90D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mews.Job.Scheduler.BuildingBlocks.Types", "src\buildingBlocks\Mews.Job.Scheduler.BuildingBlocks.Types\Mews.Job.Scheduler.BuildingBlocks.Types.csproj", "{3BED991E-395A-460B-B256-BD2893B4A684}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{DD139CFD-81E2-408F-9108-DDBC24E6421D}"
+	ProjectSection(SolutionItems) = preProject
+		build\scripts\bash\workflows\api.sh = build\scripts\bash\workflows\api.sh
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{1A35A02F-BF8F-46A0-A88B-6E1F93C85FA5}"
+	ProjectSection(SolutionItems) = preProject
+		build\scripts\powershell\workflows\api.ps1 = build\scripts\powershell\workflows\api.ps1
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mews.Job.Scheduler.Core.Messaging", "src\modules\core\Mews.Job.Scheduler.Core.Messaging\Mews.Job.Scheduler.Core.Messaging.csproj", "{99EE1D42-7EE8-4340-BCBA-34DC5ECB454A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mews.Job.Scheduler.BuildingBlocks.Application", "src\buildingBlocks\Mews.Job.Scheduler.BuildingBlocks.Application\Mews.Job.Scheduler.BuildingBlocks.Application.csproj", "{F16C3F99-564D-45AE-BE28-3F77C0692CEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mews.Job.Scheduler.Core.Application", "src\modules\core\Mews.Job.Scheduler.Core.Application\Mews.Job.Scheduler.Core.Application.csproj", "{72B09462-B1B2-4521-BF4F-3CD2CB6DE2D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mssql", "mssql", "{FF7F4836-D01E-4BCF-AE33-4E016470B5E9}"
+	ProjectSection(SolutionItems) = preProject
+		build\mssql\configure-db.sh = build\mssql\configure-db.sh
+		build\mssql\Dockerfile = build\mssql\Dockerfile
+		build\mssql\entrypoint.sh = build\mssql\entrypoint.sh
+		build\mssql\setup.sql = build\mssql\setup.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mews.Job.Scheduler.Tests.Shared", "tests\Mews.Job.Scheduler.Tests.Shared\Mews.Job.Scheduler.Tests.Shared.csproj", "{AEFA174D-8B22-408F-8AB1-E343587CF54C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mews.Job.Scheduler.Aspire.AppHost", "src\hosts\Mews.Job.Scheduler.Aspire.AppHost\Mews.Job.Scheduler.Aspire.AppHost.csproj", "{465C623F-7B91-44BD-A014-34DBE98AA159}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{FE5D93DC-7CAE-4B12-A65B-C0F5890101A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{56709B8B-AE2E-416D-B65B-7C854A153652}"
+	ProjectSection(SolutionItems) = preProject
+		.github\CODEOWNERS = .github\CODEOWNERS
+		.github\dependabot.yml = .github\dependabot.yml
+		.github\labeler.yml = .github\labeler.yml
+		.github\PULL_REQUEST_TEMPLATE.md = .github\PULL_REQUEST_TEMPLATE.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{316DDCF9-46F3-4261-878A-6AC24A780CA1}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-publish.yml = .github\workflows\build-publish.yml
+		.github\workflows\infrastructure-preview.yml = .github\workflows\infrastructure-preview.yml
+		.github\workflows\pr-labeler.yml = .github\workflows\pr-labeler.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mews.Job.Scheduler.Aspire.IntegrationTests", "tests\Mews.Job.Scheduler.Aspire.IntegrationTests\Mews.Job.Scheduler.Aspire.IntegrationTests.csproj", "{98E69879-6ECC-42D5-AAB3-F5E36934F06C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mews.Job.Scheduler.MigrationService", "src\tools\Mews.Job.Scheduler.MigrationService\Mews.Job.Scheduler.MigrationService.csproj", "{9E04BA00-542C-485C-9D54-C8395D7336CB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F64C9EE2-4A4B-4397-B304-344A97161E5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F64C9EE2-4A4B-4397-B304-344A97161E5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F64C9EE2-4A4B-4397-B304-344A97161E5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F64C9EE2-4A4B-4397-B304-344A97161E5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3399B9F-FFD9-4A6B-80C3-D0BA0497B64E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3399B9F-FFD9-4A6B-80C3-D0BA0497B64E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3399B9F-FFD9-4A6B-80C3-D0BA0497B64E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3399B9F-FFD9-4A6B-80C3-D0BA0497B64E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E61A779-689E-4D1F-8447-37FA7A47884F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E61A779-689E-4D1F-8447-37FA7A47884F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E61A779-689E-4D1F-8447-37FA7A47884F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E61A779-689E-4D1F-8447-37FA7A47884F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB6273A8-F0F8-4EE7-9AA8-F2A935C19E12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB6273A8-F0F8-4EE7-9AA8-F2A935C19E12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB6273A8-F0F8-4EE7-9AA8-F2A935C19E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB6273A8-F0F8-4EE7-9AA8-F2A935C19E12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1454E871-7A6F-45F2-8F34-2077BDF1FAA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1454E871-7A6F-45F2-8F34-2077BDF1FAA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1454E871-7A6F-45F2-8F34-2077BDF1FAA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1454E871-7A6F-45F2-8F34-2077BDF1FAA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F9BF8EA-134F-40BC-9386-70B2E3B6B771}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F9BF8EA-134F-40BC-9386-70B2E3B6B771}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F9BF8EA-134F-40BC-9386-70B2E3B6B771}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F9BF8EA-134F-40BC-9386-70B2E3B6B771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A508698-2EF3-4C3C-A963-2750A0FAB82B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A508698-2EF3-4C3C-A963-2750A0FAB82B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A508698-2EF3-4C3C-A963-2750A0FAB82B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A508698-2EF3-4C3C-A963-2750A0FAB82B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E27B6600-E39F-467D-9BDF-0160E158E655}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E27B6600-E39F-467D-9BDF-0160E158E655}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E27B6600-E39F-467D-9BDF-0160E158E655}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E27B6600-E39F-467D-9BDF-0160E158E655}.Release|Any CPU.Build.0 = Release|Any CPU
+		{540D7102-05FB-4D97-961F-2840C4EFF90D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{540D7102-05FB-4D97-961F-2840C4EFF90D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{540D7102-05FB-4D97-961F-2840C4EFF90D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{540D7102-05FB-4D97-961F-2840C4EFF90D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BED991E-395A-460B-B256-BD2893B4A684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BED991E-395A-460B-B256-BD2893B4A684}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BED991E-395A-460B-B256-BD2893B4A684}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BED991E-395A-460B-B256-BD2893B4A684}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99EE1D42-7EE8-4340-BCBA-34DC5ECB454A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99EE1D42-7EE8-4340-BCBA-34DC5ECB454A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99EE1D42-7EE8-4340-BCBA-34DC5ECB454A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99EE1D42-7EE8-4340-BCBA-34DC5ECB454A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F16C3F99-564D-45AE-BE28-3F77C0692CEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F16C3F99-564D-45AE-BE28-3F77C0692CEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F16C3F99-564D-45AE-BE28-3F77C0692CEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F16C3F99-564D-45AE-BE28-3F77C0692CEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72B09462-B1B2-4521-BF4F-3CD2CB6DE2D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72B09462-B1B2-4521-BF4F-3CD2CB6DE2D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72B09462-B1B2-4521-BF4F-3CD2CB6DE2D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72B09462-B1B2-4521-BF4F-3CD2CB6DE2D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEFA174D-8B22-408F-8AB1-E343587CF54C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEFA174D-8B22-408F-8AB1-E343587CF54C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEFA174D-8B22-408F-8AB1-E343587CF54C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEFA174D-8B22-408F-8AB1-E343587CF54C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{465C623F-7B91-44BD-A014-34DBE98AA159}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{465C623F-7B91-44BD-A014-34DBE98AA159}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{465C623F-7B91-44BD-A014-34DBE98AA159}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{465C623F-7B91-44BD-A014-34DBE98AA159}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98E69879-6ECC-42D5-AAB3-F5E36934F06C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98E69879-6ECC-42D5-AAB3-F5E36934F06C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98E69879-6ECC-42D5-AAB3-F5E36934F06C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98E69879-6ECC-42D5-AAB3-F5E36934F06C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E04BA00-542C-485C-9D54-C8395D7336CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E04BA00-542C-485C-9D54-C8395D7336CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E04BA00-542C-485C-9D54-C8395D7336CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E04BA00-542C-485C-9D54-C8395D7336CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F64C9EE2-4A4B-4397-B304-344A97161E5A} = {5250A158-814B-44A0-A9FF-A0C5C5E81A64}
+		{A3399B9F-FFD9-4A6B-80C3-D0BA0497B64E} = {7873E3B8-3022-42DF-BC43-0E3499D0C47F}
+		{1E61A779-689E-4D1F-8447-37FA7A47884F} = {8A7B1009-1CAB-49ED-970B-CBDCB855C9CF}
+		{5250A158-814B-44A0-A9FF-A0C5C5E81A64} = {1DE23159-9E88-4F40-B9E0-1F486FEE7933}
+		{F0F01444-9533-43DE-844B-B3AD9468E1E7} = {FC64EAC3-C9C7-4788-A8C5-00EFD9E3590C}
+		{BB6273A8-F0F8-4EE7-9AA8-F2A935C19E12} = {7873E3B8-3022-42DF-BC43-0E3499D0C47F}
+		{44A8660E-934B-4A44-BF67-4C897FADCC23} = {F0F01444-9533-43DE-844B-B3AD9468E1E7}
+		{BCA3DC50-66A3-421B-8511-1EB5CBDA8677} = {44A8660E-934B-4A44-BF67-4C897FADCC23}
+		{5345A46B-06FD-442B-B641-926208ED9E51} = {44A8660E-934B-4A44-BF67-4C897FADCC23}
+		{DA28D298-4F00-4448-A672-7033EA35F0F2} = {1DE23159-9E88-4F40-B9E0-1F486FEE7933}
+		{1E4FDD6C-1965-48B1-906D-141755A6B181} = {DA28D298-4F00-4448-A672-7033EA35F0F2}
+		{1454E871-7A6F-45F2-8F34-2077BDF1FAA7} = {1E4FDD6C-1965-48B1-906D-141755A6B181}
+		{1F9BF8EA-134F-40BC-9386-70B2E3B6B771} = {1E4FDD6C-1965-48B1-906D-141755A6B181}
+		{6B13F25C-3126-49CD-AB71-B8D9CF2EDD3C} = {1DE23159-9E88-4F40-B9E0-1F486FEE7933}
+		{3A508698-2EF3-4C3C-A963-2750A0FAB82B} = {6B13F25C-3126-49CD-AB71-B8D9CF2EDD3C}
+		{E27B6600-E39F-467D-9BDF-0160E158E655} = {6B13F25C-3126-49CD-AB71-B8D9CF2EDD3C}
+		{540D7102-05FB-4D97-961F-2840C4EFF90D} = {6B13F25C-3126-49CD-AB71-B8D9CF2EDD3C}
+		{3BED991E-395A-460B-B256-BD2893B4A684} = {6B13F25C-3126-49CD-AB71-B8D9CF2EDD3C}
+		{DD139CFD-81E2-408F-9108-DDBC24E6421D} = {BCA3DC50-66A3-421B-8511-1EB5CBDA8677}
+		{1A35A02F-BF8F-46A0-A88B-6E1F93C85FA5} = {5345A46B-06FD-442B-B641-926208ED9E51}
+		{99EE1D42-7EE8-4340-BCBA-34DC5ECB454A} = {1E4FDD6C-1965-48B1-906D-141755A6B181}
+		{F16C3F99-564D-45AE-BE28-3F77C0692CEF} = {6B13F25C-3126-49CD-AB71-B8D9CF2EDD3C}
+		{72B09462-B1B2-4521-BF4F-3CD2CB6DE2D9} = {1E4FDD6C-1965-48B1-906D-141755A6B181}
+		{FF7F4836-D01E-4BCF-AE33-4E016470B5E9} = {F0F01444-9533-43DE-844B-B3AD9468E1E7}
+		{AEFA174D-8B22-408F-8AB1-E343587CF54C} = {7873E3B8-3022-42DF-BC43-0E3499D0C47F}
+		{465C623F-7B91-44BD-A014-34DBE98AA159} = {5250A158-814B-44A0-A9FF-A0C5C5E81A64}
+		{FE5D93DC-7CAE-4B12-A65B-C0F5890101A5} = {1DE23159-9E88-4F40-B9E0-1F486FEE7933}
+		{56709B8B-AE2E-416D-B65B-7C854A153652} = {FC64EAC3-C9C7-4788-A8C5-00EFD9E3590C}
+		{316DDCF9-46F3-4261-878A-6AC24A780CA1} = {56709B8B-AE2E-416D-B65B-7C854A153652}
+		{98E69879-6ECC-42D5-AAB3-F5E36934F06C} = {7873E3B8-3022-42DF-BC43-0E3499D0C47F}
+		{9E04BA00-542C-485C-9D54-C8395D7336CB} = {FE5D93DC-7CAE-4B12-A65B-C0F5890101A5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A95CDC3D-BC8E-4536-987E-4B44BCB2B037}
+	EndGlobalSection
+EndGlobal

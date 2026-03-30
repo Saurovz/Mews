@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <UserSecretsId>546086ef-c5f6-4e25-a6b0-bf05045bacb2</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Update="appsettings.$(ASPNETCORE_ENVIRONMENT).json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.UI" />
+    <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" />
+    <PackageReference Include="DistributedLock.SqlServer" />
+    <PackageReference Include="EFCore.BulkExtensions" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="MediatR" />
+    <PackageReference Include="Mews.Atlas.AspNetCore" />
+    <PackageReference Include="Mews.Atlas.OpenTelemetry" />
+    <PackageReference Include="Mews.Atlas.Temporal" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Mews.Atlas.Azure" />
+    <PackageReference Include="Mews.Atlas.Alerting" />
+    <PackageReference Include="Microsoft.Identity.Web" />
+    <PackageReference Include="NSwag.AspNetCore" />
+    <PackageReference Include="NewRelic.LogEnrichers.Serilog" />
+    <PackageReference Include="NUnit" />
+    <PackageReference Include="OpenTelemetry" />
+    <PackageReference Include="OpenTelemetry.Exporter.Console" />
+    <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.EntityFrameworkCore" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" />
+    <PackageReference Include="Serilog" />
+    <PackageReference Include="Serilog.AspNetCore" />
+    <PackageReference Include="Serilog.Sinks.OpenTelemetry" />
+    <PackageReference Include="Mews.Atlas.Aspire.ServiceDefaults" />
+    <PackageReference Include="Aspire.Microsoft.EntityFrameworkCore.SqlServer" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\modules\core\Mews.Job.Scheduler.Core.Application\Mews.Job.Scheduler.Core.Application.csproj" />
+    <ProjectReference Include="..\..\modules\core\Mews.Job.Scheduler.Core.EntityFrameworkCore\Mews.Job.Scheduler.Core.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+</Project>

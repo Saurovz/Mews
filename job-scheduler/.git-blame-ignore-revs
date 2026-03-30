@@ -1,0 +1,10 @@
+# This file contains a list of git hashes of revisions to be ignored.
+# Use command:
+# git config blame.ignoreRevsFile .git-blame-ignore-revs
+# to start ignoring them automatically during git blame.
+#
+# Instructions:
+# - Add only very large (generally automated) reformatting or renaming commits to this list.
+# - Precede each revision with a descriptive comment describing the work done in the commit e.g. commit message.
+# - Only put full hashes to this list (not short hashes or any other revision reference).
+# - Append to the bottom of the file (revisions should be in chronological order from oldest to newest).

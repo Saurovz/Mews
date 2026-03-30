@@ -1,0 +1,21 @@
+# NOTE: Requires **VS2019 16.3** or later
+root = true
+#### Core EditorConfig Options ####
+[*]
+# Indentation and spacing
+indent_size = 4
+indent_style = space
+tab_width = 4
+# New line preferences
+end_of_line = crlf
+insert_final_newline = true
+
+[*.sh]
+end_of_line = lf
+
+[*.yml]
+indent_size = 2
+tab_width = 2
+
+[Dockerfile]
+end_of_line = lf

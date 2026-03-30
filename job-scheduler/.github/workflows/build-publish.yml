@@ -1,0 +1,131 @@
+name: build
+on:
+  push
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      checks: write # needed for dorny/test-reporter
+
+    steps:
+      - name: docker-compose shim
+        run: ln -s /usr/libexec/docker/cli-plugins/docker-compose /usr/local/bin/docker-compose
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: global.json
+          source-url: https://pkgs.dev.azure.com/mews/_packaging/mews/nuget/v3/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore
+
+      - name: Test
+        env:
+          PACT_BROKER_BASE_URL: ${{ vars.PACTFLOW_BASE_URL }}
+          PACT_BROKER_TOKEN: ${{ secrets.PACTFLOW_TOKEN }}
+        run: |
+          for testProject in tests/*/*.csproj; do
+            testFileName=$(basename "$testProject" .csproj)
+            dotnet test "$testProject" --no-restore --logger:"junit;LogFilePath=$PWD/Results/$testFileName.xml" || true
+          done
+
+      - name: Publish Test Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: Test Results
+          path: '**/Results/*.xml'
+
+      - name: Test Report
+        uses: dorny/test-reporter@v2
+        if: always()
+        with:
+          name: Test Report
+          path: "**/Results/*.xml"
+          reporter: java-junit
+          fail-on-error: true
+
+      - name: Test Summary
+        uses: test-summary/action@v2
+        if: always()
+        with:
+          paths: "**/Results/*.xml"
+
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    outputs:
+      new_tag: ${{ steps.tag_version.outputs.new_tag }}
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Github Packages
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create a package version
+        id: version
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: |
+          echo "PACKAGE_VERSION=1.0.${{ github.run_number }}.${{ github.run_attempt }}" >> $GITHUB_ENV
+
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.2
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          custom_tag: ${{ env.PACKAGE_VERSION }}
+          tag_prefix: ""
+
+      - name: Create a GitHub release
+        uses: ncipollo/release-action@v1
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
+          body: ${{ steps.tag_version.outputs.changelog }}
+
+      - name: Build and push to GitHub Container Registry
+        uses: docker/build-push-action@v6
+        with:
+          # build on feature branches, push only on main branch
+          push: ${{ github.ref == 'refs/heads/main' }}
+          tags: ghcr.io/mewssystems/${{ github.event.repository.name }}:${{ steps.tag_version.outputs.new_tag || '0.0.0' }}
+          build-args: |
+            FEED_ACCESSTOKEN=${{ secrets.AZURE_DEVOPS_TOKEN }}
+            PACKAGE_VERSION=${{ steps.tag_version.outputs.new_tag || '0.0.0' }}
+
+  create-octopus-release:
+    runs-on: ubuntu-latest
+    if: ${{ github.ref == 'refs/heads/main' }}
+    needs: [build-and-test, build-and-push-image]
+    
+    steps:
+      - name: Create a release in Octopus Deploy
+        uses: OctopusDeploy/create-release-action@v3
+        env:
+          OCTOPUS_API_KEY: ${{ secrets.OCTOPUS_API_KEY  }}
+          OCTOPUS_URL: ${{ secrets.OCTOPUS_URL }}
+          OCTOPUS_SPACE: ${{ vars.OCTOPUS_SPACE }}
+        with:
+          project: '${{ vars.SERVICE_NAME }}'
+          package_version: ${{ needs.build-and-push-image.outputs.new_tag }}
+          git_ref: ${{ github.ref }}

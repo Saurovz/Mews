@@ -1,0 +1,31 @@
+config:
+  Mews.Job.Scheduler:allow-s2s-as-server: "true"
+  Mews.Job.Scheduler:container-registry-password:
+    secure: AAABAK9VMl1vn/3kWfXOKkkpBZm3ocmelwJSszFyvh/UfZs5sYerHN0NwGT27rzeGnnN77qLovtNXydGa3oz9xs5cOSzEw5c
+  Mews.Job.Scheduler:container-registry-username: 772eb7f9-3bf0-49d4-a542-65675202437c
+  Mews.Job.Scheduler:cpu-utilization-scale-percentage: "80"
+  Mews.Job.Scheduler:cpus-per-container: "1"
+  Mews.Job.Scheduler:custom-domain: job-scheduler.mews-test.com
+  Mews.Job.Scheduler:enable-startup-probe: "true"
+  Mews.Job.Scheduler:gibibytes-of-memory-per-container: "2"
+  Mews.Job.Scheduler:locations: Germany West Central
+  Mews.Job.Scheduler:max-replicas: "2"
+  Mews.Job.Scheduler:min-replicas: "1"
+  Mews.Job.Scheduler:newrelic-license-key:
+    secure: AAABAPMRxTb42m5eq7dtEpP1s4rWfluecg9ER037EqI7qQo1Be8AMrvO+94cVD+Vx08TETF4lDP2lSOHjkCdb38IXaWp00lA
+  Mews.Job.Scheduler:resource-group: job-scheduler-test
+  Mews.Job.Scheduler:service-bus-locations: Germany West Central
+  Mews.Job.Scheduler:service-bus-name: mews-test-sb-gwc
+  Mews.Job.Scheduler:service-bus-resource-group-id: /subscriptions/1431c24d-7767-4aa7-ac57-7ba1da5a510a/resourceGroups/mews-test
+  Mews.Job.Scheduler:service-environment: test
+  Mews.Job.Scheduler:service-name: job-scheduler
+  Mews.Job.Scheduler:shared-stack-name: mews/shared/test
+  Mews.Job.Scheduler:sql-server-admin-login: Mews-78df0d81-91ae-43da-adf3-44754c2da74a
+  Mews.Job.Scheduler:sql-server-backup-storage-redundancy: Local
+  Mews.Job.Scheduler:sql-server-cpu-count: "2"
+  Mews.Job.Scheduler:sql-server-geo-replica-in-paired-region: "false"
+  Mews.Job.Scheduler:sql-server-high-availability-replica-count: "0"
+  Mews.Job.Scheduler:sql-server-zone-redundancy: "false"
+  Mews.Job.Scheduler:container-app-deploy-to-paired-region: false
+  azure-native:subscriptionId: 1431c24d-7767-4aa7-ac57-7ba1da5a510a
+  azure-native:tenantId: afdb37c2-13f1-4a78-b91e-85749ac8e807

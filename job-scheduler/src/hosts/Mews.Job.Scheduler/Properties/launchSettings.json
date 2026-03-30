@@ -1,0 +1,17 @@
+{
+    "$schema": "https://json.schemastore.org/launchsettings.json",
+    "profiles": {
+        "Mews.Job.Scheduler.Aspire": {
+            "commandName": "Project",
+            "launchBrowser": true,
+            "applicationUrl": "http://localhost:5009",
+            "launchUrl": "swagger",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT": "localAspire",
+                "Messaging__ServiceBus__Connections__Scheduler__FullyQualifiedNamespace": "mews-develop-sb-weu-premium.servicebus.windows.net",
+                "SERVICE_BUS_URL": "https://mews-develop-sb-weu-premium.servicebus.windows.net/job-scheduler-local-development"
+            },
+            "dotnetRunMessages": true
+        }
+    }
+}

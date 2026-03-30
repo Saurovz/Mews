@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Mews.Atlas.FeatureFlags" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mews.Job.Scheduler.BuildingBlocks.Types\Mews.Job.Scheduler.BuildingBlocks.Types.csproj" />
+  </ItemGroup>
+</Project>

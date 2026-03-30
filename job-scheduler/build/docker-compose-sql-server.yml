@@ -1,0 +1,29 @@
+# This file is used for loading a local instance of sql server
+version: "3.8"
+services:
+    sql-server-db:
+        hostname: jobScheduler
+        container_name: mssql-job-scheduler-mssql-container
+        image: job-scheduler-sql-image
+        build:
+           context: mssql
+           dockerfile: Dockerfile
+        ports:
+           - "14340:1433"
+        environment:
+          ACCEPT_EULA: Y
+          SA_PASSWORD: Test1234!
+          MSSQL_PORT: 14340
+          MSSQL_DB: jobschedulerdb
+          MSSQL_USER: jobscheduleruser
+          MSSQL_PASSWORD: Mews1234!
+        volumes:
+        - ./database/msqqldata:/var/opt/mssql/data
+        networks:
+        - job-scheduler-network
+volumes:
+  sql-server-db-data:
+    driver: local
+networks:
+  job-scheduler-network:
+    driver: bridge

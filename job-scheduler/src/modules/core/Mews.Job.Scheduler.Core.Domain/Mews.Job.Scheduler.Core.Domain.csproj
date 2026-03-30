@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Mews.Job.Scheduler.Domain</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\buildingBlocks\Mews.Job.Scheduler.BuildingBlocks.Configuration\Mews.Job.Scheduler.BuildingBlocks.Configuration.csproj" />
+    <ProjectReference Include="..\..\..\buildingBlocks\Mews.Job.Scheduler.BuildingBlocks.Domain\Mews.Job.Scheduler.BuildingBlocks.Domain.csproj" />
+    <ProjectReference Include="..\..\..\buildingBlocks\Mews.Job.Scheduler.BuildingBlocks.Types\Mews.Job.Scheduler.BuildingBlocks.Types.csproj" />
+    <ProjectReference Include="..\Mews.Job.Scheduler.Core.Messaging\Mews.Job.Scheduler.Core.Messaging.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Mews.Atlas.Alerting" />
+    <PackageReference Include="Mews.Atlas.OpenTelemetry" />
+  </ItemGroup>
+</Project>

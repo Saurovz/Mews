@@ -1,0 +1,242 @@
+step "run-a-script" {
+    name = "Fetch Repo Tags"
+
+    action "fetch-repo-tags" {
+        action_type = "Octopus.Script"
+        is_required = true
+        properties = {
+            Octopus.Action.GitRepository.Source = "External"
+            Octopus.Action.Script.ScriptFileName = "octopus/fetch-tags.sh"
+            Octopus.Action.Script.ScriptSource = "GitRepository"
+            OctopusUseBundledTooling = "False"
+        }
+        worker_pool = "azure-workers"
+
+        git_dependencies {
+            default_branch = "main"
+            git_credential_id = "GitCredentials-22"
+            git_credential_type = "Library"
+            repository_uri = "https://github.com/MewsSystems/deployment-scripts.git"
+        }
+    }
+}
+
+step "run-an-azure-script" {
+    name = "Copy image from GHCR to ACR"
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.Azure.AccountId = "#{Azure}"
+            Octopus.Action.Script.ScriptFileName = "octopus/copy-image-ghcr-acr.sh"
+            Octopus.Action.Script.ScriptSource = "GitRepository"
+            OctopusUseBundledTooling = "False"
+        }
+        worker_pool = "azure-workers"
+
+        container {
+            feed = "worker-image-from-acr"
+            image = "octopus-worker-image-sdk-8:latest"
+        }
+
+        git_dependencies {
+            default_branch = "main"
+            git_credential_id = "GitCredentials-22"
+            git_credential_type = "Library"
+            repository_uri = "https://github.com/MewsSystems/deployment-scripts.git"
+        }
+
+        packages "job-scheduler" {
+            acquisition_location = "Server"
+            feed = "github"
+            package_id = "MewsSystems/job-scheduler"
+            properties = {
+                Extract = "False"
+                Purpose = ""
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
+
+step "deploy-migrations" {
+    name = "Deploy Migrations"
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.Script.ScriptBody = <<-EOT
+                set -euo pipefail
+                
+                PACKAGE_VERSION="Octopus.Action.Package[$(get_octopusvariable "RepositoryName")].PackageVersion"
+                IMAGE_VERSION=$(get_octopusvariable $PACKAGE_VERSION)
+                IMAGE="ghcr.io/mewssystems/$(get_octopusvariable "RepositoryName"):$IMAGE_VERSION"
+                
+                TARGET_CONNECTION_STRING="Server=tcp:$(get_octopusvariable "DatabaseServer"),1433;Database=$(get_octopusvariable "DatabaseName");User Id=$(get_octopusvariable "DatabaseUsername");Password=$(get_octopusvariable "DatabasePassword");TrustServerCertificate=True;Connection Timeout=30"
+                
+                docker login ghcr.io -u $(get_octopusvariable "GitHubContainerRegistryUsername") -p $(get_octopusvariable "GitHubContainerRegistryPassword")
+                docker run --rm \
+                  -e DB_CONNECTION_STRING="$TARGET_CONNECTION_STRING" \
+                  -e RUN_MIGRATIONS=true \
+                  $IMAGE
+                EOT
+            Octopus.Action.Script.ScriptSource = "Inline"
+            Octopus.Action.Script.Syntax = "Bash"
+        }
+        worker_pool = "azure-workers"
+
+        packages "job-scheduler" {
+            acquisition_location = "Server"
+            feed = "github"
+            package_id = "MewsSystems/job-scheduler"
+            properties = {
+                Extract = "True"
+                Purpose = ""
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
+
+step "checkout-from-github" {
+    name = "Deploy Application"
+
+    action "deploy" {
+        action_type = "Octopus.Script"
+        is_required = true
+        properties = {
+            Octopus.Action.Script.ScriptFileName = "octopus/pulumi-deploy.sh"
+            Octopus.Action.Script.ScriptSource = "GitRepository"
+            OctopusUseBundledTooling = "False"
+        }
+        worker_pool = "azure-workers"
+
+        container {
+            feed = "worker-image-from-acr"
+            image = "octopus-worker-image-sdk-8:latest"
+        }
+
+        git_dependencies {
+            default_branch = "main"
+            git_credential_id = "GitCredentials-22"
+            git_credential_type = "Library"
+            repository_uri = "https://github.com/MewsSystems/deployment-scripts.git"
+        }
+
+        packages "job-scheduler" {
+            acquisition_location = "Server"
+            feed = "github"
+            package_id = "MewsSystems/job-scheduler"
+            properties = {
+                Extract = "True"
+                Purpose = ""
+                SelectionMode = "immediate"
+            }
+        }
+    }
+}
+
+step "service-health-check" {
+    name = "Service Health Check"
+
+    action {
+        action_type = "Octopus.AzurePowerShell"
+        properties = {
+            Octopus.Action.Azure.AccountId = "#{Azure}"
+            Octopus.Action.Script.ScriptFileName = "octopus/servicehealthcheck.sh"
+            Octopus.Action.Script.ScriptSource = "GitRepository"
+            OctopusUseBundledTooling = "False"
+        }
+        worker_pool = "azure-workers"
+
+        container {
+            feed = "worker-image-from-acr"
+            image = "octopus-worker-image-sdk-8:latest"
+        }
+
+        git_dependencies {
+            default_branch = "main"
+            git_credential_id = "GitCredentials-22"
+            git_credential_type = "Library"
+            repository_uri = "https://github.com/MewsSystems/deployment-scripts.git"
+        }
+    }
+}
+
+step "new-relic-deployment" {
+    name = "New Relic deployment"
+
+    action {
+        action_type = "Octopus.Script"
+        is_required = true
+        properties = {
+            Octopus.Action.GitRepository.Source = "External"
+            Octopus.Action.Script.ScriptFileName = "octopus/newrelic-deployment.sh"
+            Octopus.Action.Script.ScriptSource = "GitRepository"
+            OctopusUseBundledTooling = "False"
+        }
+        worker_pool = "azure-workers"
+
+        container {
+            feed = "worker-image-from-acr"
+            image = "octopus-worker-image-sdk-8:latest"
+        }
+
+        git_dependencies {
+            default_branch = "main"
+            git_credential_id = "GitCredentials-22"
+            git_credential_type = "Library"
+            repository_uri = "https://github.com/MewsSystems/deployment-scripts.git"
+        }
+    }
+}
+
+step "secret-rotator-runbook-deployment" {
+    name = "Secrets Rotator Runbook Deployment"
+
+    action {
+        action_type = "Octopus.Script"
+        is_required = true
+        properties = {
+            Octopus.Action.GitRepository.Source = "External"
+            Octopus.Action.Script.ScriptFileName = "octopus/create-update-runbook-and-trigger.sh"
+            Octopus.Action.Script.ScriptSource = "GitRepository"
+            OctopusUseBundledTooling = "False"
+        }
+        worker_pool = "azure-workers"
+
+        container {
+            feed = "worker-image-from-acr"
+            image = "octopus-worker-image-sdk-8:latest"
+        }
+
+        git_dependencies {
+            default_branch = "main"
+            git_credential_id = "GitCredentials-22"
+            git_credential_type = "Library"
+            repository_uri = "https://github.com/MewsSystems/deployment-scripts.git"
+        }
+    }
+}
+
+step "register-linearb-deployment" {
+    name = "Register LinearB Deployment"
+
+    action {
+        action_type = "Octopus.Script"
+        properties = {
+            Octopus.Action.GitRepository.Source = "External"
+            Octopus.Action.Script.ScriptFileName = "octopus/linearb-register-deployment.sh"
+            Octopus.Action.Script.ScriptParameters = "\"https://github.com/MewsSystems/job-scheduler.git\" \"#{Octopus.Release.Git.CommitHash}\" \"#{Octopus.Environment.Name}\""
+            Octopus.Action.Script.ScriptSource = "GitRepository"
+        }
+        worker_pool = "azure-workers"
+
+        git_dependencies {
+            default_branch = "main"
+            git_credential_id = "GitCredentials-22"
+            git_credential_type = "Library"
+            repository_uri = "https://github.com/MewsSystems/deployment-scripts.git"
+        }
+    }
+}

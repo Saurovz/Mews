@@ -1,0 +1,32 @@
+version: "3.8"
+name: "job-scheduler"
+services:
+  api:
+    container_name: job-scheduler-api-container
+    image: job-scheduler-image
+    build:
+      context: ../
+      dockerfile: Dockerfile
+      args:
+        PACKAGE_VERSION: 1.0.0
+        FEED_ACCESSTOKEN: ${FEED_ACCESSTOKEN}
+    ports:
+      - "5029:5029"
+    environment:
+      - ASPNETCORE_URLS=http://+:5029
+      - ASPNETCORE_ENVIRONMENT=localDocker
+      - ConnectionStrings__JobSchedulerDatabase=Server=jobScheduler,1433;Database=jobschedulerdb;User Id=jobscheduleruser;Password=Mews1234!;MultipleActiveResultSets=true;TrustServerCertificate=true;
+      - SqlConfiguration__ConnectionString=Server=host.docker.internal,1433;Database=mews-local-db;User Id=dockerUser;Password=1234!;TrustServerCertificate=true;Max Pool Size=500;MultipleActiveResultSets=True;ApplicationIntent=ReadWrite
+      - SqlConfiguration__SchemaName=local
+    env_file:
+      - ./common.env
+    networks:
+      - job-scheduler-network
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:5029/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+networks:
+  job-scheduler-network:
+    driver: bridge

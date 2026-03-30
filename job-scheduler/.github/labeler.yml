@@ -1,0 +1,4 @@
+# Add the tooling label to all PRs
+'be.tooling':
+- changed-files:
+  - any-glob-to-any-file: '**'

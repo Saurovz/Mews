@@ -1,0 +1,4 @@
+﻿name: Mews.Job.Scheduler
+description: Mews service
+runtime: dotnet
+main: infra/Mews.Job.Scheduler.Infrastructure/

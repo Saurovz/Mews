@@ -1,0 +1,31 @@
+config:
+  Mews.Job.Scheduler:container-registry-password:
+    secure: AAABAAlNgQ6ztpsP+20p8TzBITj0uwtt93wj1SPXwDZFYNBDTAwgXf8dhOX2lXAXdsV6rdyH7XmiGaodcyGMLBtqqkIuh6fx
+  Mews.Job.Scheduler:container-registry-username: 772eb7f9-3bf0-49d4-a542-65675202437c
+  Mews.Job.Scheduler:cpu-utilization-scale-percentage: "80"
+  Mews.Job.Scheduler:cpus-per-container: "1"
+  Mews.Job.Scheduler:custom-domain: job-scheduler.services.mews.com
+  Mews.Job.Scheduler:gibibytes-of-memory-per-container: "2"
+  Mews.Job.Scheduler:locations: West Europe
+  Mews.Job.Scheduler:max-replicas: "6"
+  Mews.Job.Scheduler:min-replicas: "3"
+  Mews.Job.Scheduler:newrelic-license-key:
+    secure: AAABAGfSAlUbucMTBnZnpOpRZRtRwk13OVyC/8rG7k0qJbrHJVIayw51OuT3yhBkZ4YNP3cbMvsTs9hAWQW1tm3kd3G8VE/h
+  Mews.Job.Scheduler:resource-group: job-scheduler-prod
+  Mews.Job.Scheduler:service-environment: prod
+  Mews.Job.Scheduler:service-name: job-scheduler
+  Mews.Job.Scheduler:shared-stack-name: mews/shared/production
+  Mews.Job.Scheduler:service-bus-resource-group-id: /subscriptions/ed3555c8-aec0-4ab2-868d-1de8f8a26864/resourceGroups/mews-prod-messaging
+  Mews.Job.Scheduler:service-bus-name: mews-prod-sb-weu
+  Mews.Job.Scheduler:service-bus-locations: West Europe, North Europe
+  Mews.Job.Scheduler:sql-server-admin-login: Mews-cf07c0b9-a32d-4d88-b707-3dd70e713970
+  Mews.Job.Scheduler:sql-server-cpu-count: "4"
+  Mews.Job.Scheduler:sql-server-zone-redundancy: false
+  Mews.Job.Scheduler:sql-server-high-availability-replica-count: "0"
+  Mews.Job.Scheduler:sql-server-backup-storage-redundancy: "Geo"
+  Mews.Job.Scheduler:sql-server-geo-replica-in-paired-region: true
+  Mews.Job.Scheduler:container-app-deploy-to-paired-region: true
+  Mews.Job.Scheduler:enable-startup-probe: true
+  Mews.Job.Scheduler:allow-s2s-as-server: true
+  azure-native:subscriptionId: ed3555c8-aec0-4ab2-868d-1de8f8a26864
+  azure-native:tenantId: afdb37c2-13f1-4a78-b91e-85749ac8e807
